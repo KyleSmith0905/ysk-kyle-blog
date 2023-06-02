@@ -1,9 +1,11 @@
 /* Ensure height of 100% is full height on the pages*/
 html, body, #__nuxt {
-  @apply h-full font-body
+  @apply h-full font-body;
 }
 
 /* Apply default color */
 body {
-  @apply text-red-50 bg-black overflow-x-hidden
+  @apply text-zinc-50 bg-black overflow-x-hidden;
+
+  --n-border-radius: 1rem;
 }

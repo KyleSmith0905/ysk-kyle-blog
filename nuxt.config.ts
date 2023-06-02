@@ -4,9 +4,21 @@ setAbsoluteSqliteDatabaseUrlForPrisma()
 
 export default defineNuxtConfig({
   runtimeConfig: {
-    version: '0.0.1'
+    authSecret: process.env.AUTH_SECRET,
+    githubClientId: process.env.GITHUB_CLIENT_ID,
+    githubClientSecret: process.env.GITHUB_CLIENT_SECRET,
+    s3AccountId: process.env.S3_ACCOUNT_ID,
+    s3AccessKeyId: process.env.S3_ACCESS_KEY_ID,
+    s3AccessKeySecret: process.env.S3_ACCESS_KEY_SECRET,
+    s3Bucket: process.env.S3_BUCKET
   },
-  modules: ['@nuxtjs/tailwindcss', 'nuxt-svgo', '@nuxt/image', '@huntersofbook/naive-ui-nuxt'],
+  modules: [
+    '@sidebase/nuxt-auth',
+    '@nuxtjs/tailwindcss',
+    'nuxt-svgo',
+    '@huntersofbook/naive-ui-nuxt',
+    '@nuxt/image-edge'
+  ],
   extends: ['@sidebase/core'],
   css: [
     '@/assets/css/override.css'
