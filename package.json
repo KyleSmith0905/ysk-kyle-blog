@@ -24,6 +24,7 @@
     "@tailwindcss/typography": "^0.5.9",
     "@testing-library/vue": "^6.6.1",
     "@types/markdown-it": "^12.2.3",
+    "@types/nodemailer": "^6.4.8",
     "@vitejs/plugin-vue": "^3.2.0",
     "@vitest/coverage-c8": "^0.26.0",
     "@vitest/ui": "^0.26.1",
@@ -53,8 +54,11 @@
     "@nuxt/image-edge": "1.0.0-28059208.2abef1b",
     "@prisma/client": "^4.14.1",
     "@sidebase/core": "^0.1.4",
+    "@vercel/analytics": "^1.0.1",
     "@vicons/ionicons5": "^0.12.0",
     "markdown-it": "^13.0.1",
-    "sharp": "^0.32.1"
+    "nodemailer": "^6.9.3",
+    "sharp": "^0.32.1",
+    "tailwind-gradient-mask-image": "^1.0.0"
   }
 }

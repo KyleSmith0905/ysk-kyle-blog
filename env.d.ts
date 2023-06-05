@@ -1,3 +1,4 @@
+
 // for svgo
 declare module '*.svg' {
   import type { DefineComponent } from 'vue'

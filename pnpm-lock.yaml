@@ -15,6 +15,8 @@ specifiers:
   '@tailwindcss/typography': ^0.5.9
   '@testing-library/vue': ^6.6.1
   '@types/markdown-it': ^12.2.3
+  '@types/nodemailer': ^6.4.8
+  '@vercel/analytics': ^1.0.1
   '@vicons/ionicons5': ^0.12.0
   '@vitejs/plugin-vue': ^3.2.0
   '@vitest/coverage-c8': ^0.26.0
@@ -27,11 +29,13 @@ specifiers:
   markdown-it: ^13.0.1
   naive-ui: ^2.34.4
   next-auth: ^4.21.1
+  nodemailer: ^6.9.3
   nuxt: 3.0.0
   nuxt-svgo: ^1.1.0
   playwright: ^1.29.2
   prisma: ^4.8.1
   sharp: ^0.32.1
+  tailwind-gradient-mask-image: ^1.0.0
   tailwindcss: ^3.3.2
   typescript: ^4.9.4
   unplugin-auto-import: ^0.12.1
@@ -42,14 +46,17 @@ specifiers:
   vue-tsc: ^1.0.16
 
 dependencies:
-  '@auth/prisma-adapter': 1.0.0_@prisma+client@4.14.1
+  '@auth/prisma-adapter': 1.0.0_anil63i24fptsz6xiy33j4b3ji
   '@aws-sdk/client-s3': 3.344.0
   '@nuxt/image-edge': 1.0.0-28059208.2abef1b
   '@prisma/client': 4.14.1_prisma@4.14.1
   '@sidebase/core': 0.1.4
+  '@vercel/analytics': 1.0.1
   '@vicons/ionicons5': 0.12.0
   markdown-it: 13.0.1
+  nodemailer: 6.9.3
   sharp: 0.32.1
+  tailwind-gradient-mask-image: 1.0.0
 
 devDependencies:
   '@faker-js/faker': 7.6.0
@@ -61,6 +68,7 @@ devDependencies:
   '@tailwindcss/typography': 0.5.9_tailwindcss@3.3.2
   '@testing-library/vue': 6.6.1
   '@types/markdown-it': 12.2.3
+  '@types/nodemailer': 6.4.8
   '@vitejs/plugin-vue': 3.2.0
   '@vitest/coverage-c8': 0.26.3_myjpafvq5fd3fvgsuotbains7e
   '@vitest/ui': 0.26.3
@@ -70,7 +78,7 @@ devDependencies:
   h3: 1.6.6
   jsdom: 21.1.2
   naive-ui: 2.34.4
-  next-auth: 4.21.1
+  next-auth: 4.21.1_nodemailer@6.9.3
   nuxt: 3.0.0_qbtu4kduoquj7qsqlc234bkazi
   nuxt-svgo: 1.2.1
   playwright: 1.34.3
@@ -102,7 +110,7 @@ packages:
     resolution: {integrity: sha512-vy9fM3pIxZmX07dL+VX1aZe7ynZ+YyB0jY+jE6r3hOK6GNY2t6W8rzpFC4tgpbXUYABkFQwgJq2XYXlxbXAI0g==}
     dev: true
 
-  /@auth/core/0.8.1:
+  /@auth/core/0.8.1_nodemailer@6.9.3:
     resolution: {integrity: sha512-WudBmZudZ/cvykxHV5hIwrYsd7AlETQ535O7w3sSiiumT28+U9GvBb8oSRtfzxpW9rym3lAdfeTJqGA8U4FecQ==}
     peerDependencies:
       nodemailer: ^6.8.0
@@ -113,17 +121,18 @@ packages:
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.14.4
+      nodemailer: 6.9.3
       oauth4webapi: 2.3.0
       preact: 10.11.3
       preact-render-to-string: 5.2.3_preact@10.11.3
     dev: false
 
-  /@auth/prisma-adapter/1.0.0_@prisma+client@4.14.1:
+  /@auth/prisma-adapter/1.0.0_anil63i24fptsz6xiy33j4b3ji:
     resolution: {integrity: sha512-+x+s5dgpNmqrcQC2ZRAXZIM6yhkWP/EXjIUgqUyMepLiX1OHi2AXIUAAbXsW4oG9OpYr/rvPIzPBpuGt6sPFwQ==}
     peerDependencies:
       '@prisma/client': '>=2.26.0 || >=3 || >=4'
     dependencies:
-      '@auth/core': 0.8.1
+      '@auth/core': 0.8.1_nodemailer@6.9.3
       '@prisma/client': 4.14.1_prisma@4.14.1
     transitivePeerDependencies:
       - nodemailer
@@ -1857,11 +1866,11 @@ packages:
       - supports-color
     dev: false
 
-  /@nuxt/kit-edge/3.5.3-28095444.4a64a64b:
-    resolution: {integrity: sha512-Tb42CSMMMc9L7TC1kfEJr7ELuxZ9NR9jQP7SPfS262/KjDIdPfc51amw1UWDLGOOGTXWfxrhQ/NSj44OkQOGVQ==}
+  /@nuxt/kit-edge/3.5.3-28099888.67f22320:
+    resolution: {integrity: sha512-piHWo+T8TqpmAC+OqMgf/aX8bdnygvfIGebkRkLHd2ZuNLfGQ/t+mv40KDmTWh/YALgW3PrGPrLVf98mCc1Ngg==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.5.3-28095444.4a64a64b
+      '@nuxt/schema': /@nuxt/schema-edge/3.5.3-28099888.67f22320
       c12: 1.4.1
       consola: 3.1.0
       defu: 6.1.2
@@ -1979,8 +1988,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.5.3-28095444.4a64a64b:
-    resolution: {integrity: sha512-8o0FDskT4qgZsShJ6Kbs36dvJ+Hh9ssD0AwLLdbEJc1bo/6FOMudXXm/US9HJ8cZJ9wDL3RnI0KQzUKK0qx29g==}
+  /@nuxt/schema-edge/3.5.3-28099888.67f22320:
+    resolution: {integrity: sha512-89LfkWEbsSM7iZSNzC+DuOfnT2nwUfr1K75Jh0IBeqR6ERRFj5j0EcHSN2FGijN4beF27JYC5SZBzuvjuGWyrg==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -2577,7 +2586,7 @@ packages:
       defu: 6.1.2
       h3: 1.6.6
       knitwork: 1.0.0
-      next-auth: 4.21.1
+      next-auth: 4.21.1_nodemailer@6.9.3
       nitropack: 2.4.1
       requrl: 3.0.2
       ufo: 1.1.2
@@ -2728,6 +2737,12 @@ packages:
 
   /@types/node/20.2.5:
     resolution: {integrity: sha512-JJulVEQXmiY9Px5axXHeYGLSjhkZEnD+MDPDGbCbIAbMslkKwmygtZFy1X6s/075Yo94sf8GuSlFfPzysQrWZQ==}
+    dev: true
+
+  /@types/nodemailer/6.4.8:
+    resolution: {integrity: sha512-oVsJSCkqViCn8/pEu2hfjwVO+Gb3e+eTWjg3PcjeFKRItfKpKwHphQqbYmPQrlMk+op7pNNWPbsJIEthpFN/OQ==}
+    dependencies:
+      '@types/node': 20.2.5
     dev: true
 
   /@types/normalize-package-data/2.4.1:
@@ -2918,6 +2933,10 @@ packages:
       unhead: 1.1.27
       vue: 3.3.4
     dev: true
+
+  /@vercel/analytics/1.0.1:
+    resolution: {integrity: sha512-Ux0c9qUfkcPqng3vrR0GTrlQdqNJ2JREn/2ydrVuKwM3RtMfF2mWX31Ijqo1opSjNAq6rK76PwtANw6kl6TAow==}
+    dev: false
 
   /@vercel/nft/0.22.6:
     resolution: {integrity: sha512-gTsFnnT4mGxodr4AUlW3/urY+8JKKB452LwF3m477RFUJTAaDmcz2JqFuInzvdybYIeyIv1sSONEJxsxnbQ5JQ==}
@@ -3607,7 +3626,7 @@ packages:
       jiti: 1.18.2
       mlly: 1.3.0
       ohash: 1.1.2
-      pathe: 1.1.0
+      pathe: 1.1.1
       perfect-debounce: 0.1.3
       pkg-types: 1.0.3
       rc9: 2.1.0
@@ -5401,7 +5420,7 @@ packages:
     dependencies:
       enhanced-resolve: 5.14.1
       mlly: 1.3.0
-      pathe: 1.1.0
+      pathe: 1.1.1
       ufo: 1.1.2
     dev: true
 
@@ -5696,7 +5715,7 @@ packages:
       https-proxy-agent: 5.0.1
       mri: 1.2.0
       node-fetch-native: 1.1.1
-      pathe: 1.1.0
+      pathe: 1.1.1
       tar: 6.1.15
     transitivePeerDependencies:
       - supports-color
@@ -7121,7 +7140,7 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
-  /next-auth/4.21.1:
+  /next-auth/4.21.1_nodemailer@6.9.3:
     resolution: {integrity: sha512-NYkU4jAPSVxWhCblE8dDFAnKM7kOoO/QEobQ0RoEVP9Wox99A3PKHwOAsWhSg8ahJG/iKIWk2Bo1xHvsS4R39Q==}
     peerDependencies:
       next: ^12.2.5 || ^13
@@ -7136,6 +7155,7 @@ packages:
       '@panva/hkdf': 1.1.1
       cookie: 0.5.0
       jose: 4.14.4
+      nodemailer: 6.9.3
       oauth: 0.9.15
       openid-client: 5.4.2
       preact: 10.15.1
@@ -7354,6 +7374,10 @@ packages:
   /node-releases/2.0.12:
     resolution: {integrity: sha512-QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==}
 
+  /nodemailer/6.9.3:
+    resolution: {integrity: sha512-fy9v3NgTzBngrMFkDsKEj0r02U7jm6XfC3b52eoNV+GCrGj+s8pt5OqhiJdWKuw51zCTdiNR/IUD1z33LIIGpg==}
+    engines: {node: '>=6.0.0'}
+
   /nopt/5.0.0:
     resolution: {integrity: sha512-Tbj67rffqceeLpcRXrT7vKAN8CwfPeIBgM7E6iBkmKLV7bEMwpGgYLGv0jACUsECaa/vuxP0IjEont6umdMgtQ==}
     engines: {node: '>=6'}
@@ -7436,7 +7460,7 @@ packages:
       vue-loader: ^17.0.0
       vue-svg-loader: 0.17.0-beta.2
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.5.3-28095444.4a64a64b
+      '@nuxt/kit': /@nuxt/kit-edge/3.5.3-28099888.67f22320
       vite-svg-loader: 4.0.0
     transitivePeerDependencies:
       - rollup
@@ -7850,7 +7874,6 @@ packages:
 
   /pathe/1.1.1:
     resolution: {integrity: sha512-d+RQGp0MAYTIaDBIMmOfMwz3E+LOZnxx1HZd5R18mmCZY0QBlK0LDZfPc8FW8Ed2DlvsuE6PRjroDY+wg4+j/Q==}
-    dev: true
 
   /pathval/1.1.1:
     resolution: {integrity: sha512-Dp6zGqpTdETdR63lehJYPeIOqpiNBNtc7BpWSLrOje7UaIsE5aY92r/AunQA7rsXvet3lrJ3JnZX29UPTKXyKQ==}
@@ -7885,7 +7908,7 @@ packages:
     dependencies:
       jsonc-parser: 3.2.0
       mlly: 1.3.0
-      pathe: 1.1.0
+      pathe: 1.1.1
 
   /playwright-core/1.34.3:
     resolution: {integrity: sha512-2pWd6G7OHKemc5x1r1rp8aQcpvDh7goMBZlJv6Co5vCNLVcQJdhxRL09SGaY6HcyHH9aT4tiynZabMofVasBYw==}
@@ -9289,6 +9312,10 @@ packages:
       - supports-color
     dev: true
 
+  /tailwind-gradient-mask-image/1.0.0:
+    resolution: {integrity: sha512-eZJhn6wHZ0Irfpq5sm0ErewH6IC82gqjfVsDQ7MYrJcfTgepOoTI6EryLppNPoZds4EeD6/H0WrysT8HE90H5g==}
+    dev: false
+
   /tailwindcss/3.3.2:
     resolution: {integrity: sha512-9jPkMiIBXvPc2KywkraqsUfbfj+dHDb+JPWtSJa9MLFdrPyazI7q6WX2sUrm7R9eVR7qqv3Pas7EvQFzxKnI6w==}
     engines: {node: '>=14.0.0'}
@@ -9702,7 +9729,7 @@ packages:
       local-pkg: 0.4.3
       magic-string: 0.30.0
       mlly: 1.3.0
-      pathe: 1.1.0
+      pathe: 1.1.1
       pkg-types: 1.0.3
       scule: 1.0.0
       strip-literal: 1.0.1
@@ -9719,7 +9746,7 @@ packages:
       local-pkg: 0.4.3
       magic-string: 0.30.0
       mlly: 1.3.0
-      pathe: 1.1.0
+      pathe: 1.1.1
       pkg-types: 1.0.3
       scule: 1.0.0
       strip-literal: 1.0.1

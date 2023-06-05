@@ -11,12 +11,13 @@ datasource db {
 }
 
 model Blog {
-  slug         String @id
+  slug         String   @id
   title        String
   summary      String
   markdown     String
   thumbnailUrl String
   thumbnailAlt String
+  createdAt    DateTime @default(now())
 }
 
 model Account {

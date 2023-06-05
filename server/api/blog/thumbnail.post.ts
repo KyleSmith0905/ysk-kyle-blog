@@ -6,7 +6,7 @@ import { isUserAdmin } from '~~/utils/authentication'
 
 export default defineEventHandler(async (event) => {
   const session = await getServerSession(event)
-  if (isUserAdmin(session?.user.email)) {
+  if (!isUserAdmin(session?.user.email)) {
     throw createError({
       statusCode: 400,
       statusMessage: 'User is not authorized to upload thumbnail images'
@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const optimizedImage = sharp(file).removeAlpha().resize({ width: 288, height: 384, fit: 'cover' }).webp({ quality: 75 })
+  const optimizedImage = sharp(file).removeAlpha().resize({ width: 384, height: 288, fit: 'cover' }).webp({ quality: 75 })
 
   const response = await blobStorage.send(
     new PutObjectCommand({
