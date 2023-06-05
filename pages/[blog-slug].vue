@@ -7,16 +7,16 @@ const { data: blogData } = useFetch('/api/blog', {
 })
 
 useHead({
-  title: blogData.value.title,
+  title: blogData.value?.title,
   meta: [
-    { name: 'twitter:title', content: blogData.value.title },
-    { property: 'og:title', content: blogData.value.title },
-    { name: 'description', content: blogData.value.summary },
-    { name: 'twitter:description', content: blogData.value.summary },
-    { property: 'og:description', content: blogData.value.summary },
-    { property: 'og:image:url', content: blogData.value.thumbnailUrl },
-    { name: 'twitter:image', content: blogData.value.thumbnailUrl },
-    { name: 'twitter:image:alt', content: blogData.value.thumbnailAlt },
+    { name: 'twitter:title', content: blogData.value?.title },
+    { property: 'og:title', content: blogData.value?.title },
+    { name: 'description', content: blogData.value?.summary },
+    { name: 'twitter:description', content: blogData.value?.summary },
+    { property: 'og:description', content: blogData.value?.summary },
+    { property: 'og:image:url', content: blogData.value?.thumbnailUrl },
+    { name: 'twitter:image', content: blogData.value?.thumbnailUrl },
+    { name: 'twitter:image:alt', content: blogData.value?.thumbnailAlt },
     { property: 'og:image:height', content: '288' },
     { property: 'og:image:width', content: '384' }
   ]
