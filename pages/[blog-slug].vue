@@ -1,31 +1,41 @@
 <script setup lang="ts">
-// @ts-nocheck
 const route = useRoute()
 
 const { data: blogData } = useFetch('/api/blog', {
+  method: 'GET',
   query: { slug: route.params.blogslug }
 })
 
-useHead({
-  title: blogData.value?.title,
-  meta: [
-    { name: 'twitter:title', content: blogData.value?.title },
-    { property: 'og:title', content: blogData.value?.title },
-    { name: 'description', content: blogData.value?.summary },
-    { name: 'twitter:description', content: blogData.value?.summary },
-    { property: 'og:description', content: blogData.value?.summary },
-    { property: 'og:image:url', content: blogData.value?.thumbnailUrl },
-    { name: 'twitter:image', content: blogData.value?.thumbnailUrl },
-    { name: 'twitter:image:alt', content: blogData.value?.thumbnailAlt },
-    { property: 'og:image:height', content: '288' },
-    { property: 'og:image:width', content: '384' }
-  ]
+const blogDataNulled = computed(() => {
+  if (blogData.value && 'title' in blogData.value) {
+    return blogData.value
+  } else {
+    return null
+  }
+})
+
+useServerSeoMeta({
+  title: blogDataNulled.value?.title,
+  ogTitle: blogDataNulled.value?.title,
+  twitterTitle: blogDataNulled.value?.title,
+  description: blogDataNulled.value?.summary,
+  ogDescription: blogDataNulled.value?.summary,
+  twitterDescription: blogDataNulled.value?.summary,
+  ogImage: blogDataNulled.value?.thumbnailUrl,
+  ogImageAlt: blogDataNulled.value?.thumbnailAlt,
+  twitterImage: blogDataNulled.value?.thumbnailUrl,
+  twitterImageAlt: blogDataNulled.value?.thumbnailAlt,
+  ogImageHeight: 288,
+  ogImageWidth: 384,
+  ogType: 'article'
+}, {
+  mode: 'all'
 })
 </script>
 <template>
-  <div class="mx-auto mt-20 w-11/12 max-w-3xl">
+  <div v-if="blogDataNulled?.markdown" class="mx-auto mt-20 w-11/12 max-w-3xl">
     <RainbowBox>
-      <RichText :block="blogData?.markdown" />
+      <RichText :block="blogDataNulled?.markdown" />
     </RainbowBox>
   </div>
 </template>

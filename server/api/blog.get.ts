@@ -1,5 +1,7 @@
 import { getPrisma } from '~~/server/utils/prisma'
 
+type selectQueries = 'markdown' | 'summary' | 'title' | 'slug' | 'thumbnailUrl' | 'thumbnailAlt';
+
 export default defineEventHandler(async (event) => {
   const prisma = getPrisma()
   const blogSlug = getQuery(event).slug
@@ -8,10 +10,10 @@ export default defineEventHandler(async (event) => {
     return { exists: false }
   }
 
-  const selectedProjection: Record<string, boolean> = {}
+  const selectedProjection: Partial<Record<selectQueries, boolean>> = {}
   if (selectedNames && Array.isArray(selectedNames)) {
     selectedNames.forEach((name) => {
-      selectedProjection[name] = true
+      selectedProjection[name as selectQueries] = true
     })
   } else {
     selectedProjection.markdown = true

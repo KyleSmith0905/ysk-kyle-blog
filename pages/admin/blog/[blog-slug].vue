@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// @ts-nocheck
 const route = useRoute()
 const message = useMessage()
 useFetch('/api/blog', {
@@ -70,7 +69,6 @@ const formValue = ref({
               :data="{
                 'blog-slug': formValue.slug,
               }"
-              @change="thumbnailChanged($event)"
             >
               <NButton :secondary="true">
                 Upload Thumbnail

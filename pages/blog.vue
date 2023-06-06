@@ -1,7 +1,13 @@
 <script lang="ts" setup>
-// @ts-nocheck
 const { data: blogListData } = useFetch('/api/blog/list')
 
+const blogListDataNulled = computed(() => {
+  if (blogListData.value && Array.isArray(blogListData.value)) {
+    return blogListData.value
+  } else {
+    return null
+  }
+})
 </script>
 <template>
   <div class="mx-auto mt-20 w-11/12 max-w-3xl">
@@ -9,7 +15,7 @@ const { data: blogListData } = useFetch('/api/blog/list')
       Contact Me
     </h1>
     <div class="mt-6 flex flex-col gap-6">
-      <RainbowBox v-for="blog of blogListData" :key="blog.slug" :to="`/${blog.slug}`" :hover="true">
+      <RainbowBox v-for="blog of blogListDataNulled" :key="blog.slug" :to="`/${blog.slug}`" :hover="true">
         <div class="flex gap-3">
           <div class="grow">
             <h2 class="line-clamp-2 font-display text-xl">

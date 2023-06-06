@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// @ts-nocheck
 import { FormInst } from 'naive-ui'
 import { LogoLinkedin, LogoYoutube, LogoTwitter } from '@vicons/ionicons5'
 

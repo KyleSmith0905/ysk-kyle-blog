@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// @ts-nocheck
 import { FormInst, UploadFileInfo, UploadInst } from 'naive-ui'
 
 const uploadRef = ref<UploadInst | null>(null)

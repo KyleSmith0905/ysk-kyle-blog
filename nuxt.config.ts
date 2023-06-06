@@ -48,7 +48,7 @@ export default defineNuxtConfig({
         { property: 'og:image:alt', content: 'Beautiful 3d rendering of the landing page to YSK Kyle Blog floating around a rainbow backdrop.' },
         { property: 'og:type', content: 'website' },
         { property: 'og:site:name', content: 'YSK Kyle Blog' },
-        { name: 'twitter:site', content: 'summary' },
+        { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:creator', content: '@KyleSmith0905' },
         { name: 'twitter:image', content: '/icons/landing-page.webp' },
         { name: 'twitter:image:alt', content: 'Beautiful 3d rendering of the landing page to YSK Kyle Blog floating around a rainbow backdrop.' },
