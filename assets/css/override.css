@@ -9,3 +9,8 @@ body {
 
   --n-border-radius: 1rem;
 }
+
+/* Apply scrollbar over header*/
+.n-scrollbar-rail__scrollbar {
+  @apply z-20;
+}
