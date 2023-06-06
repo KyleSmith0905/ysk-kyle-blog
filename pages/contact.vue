@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { FormInst } from 'naive-ui'
 import { LogoLinkedin, LogoYoutube, LogoTwitter } from '@vicons/ionicons5'
+import { breakpointsTailwind } from '@vueuse/core'
 
 const message = useMessage()
 
@@ -20,9 +21,12 @@ const sendMessage = async () => {
   })
   message.success('Successfully sent message to YSK Kyle.')
 }
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const smallBreakpoint = breakpoints.smaller('sm')
 </script>
 <template>
-  <div class="mx-auto mt-20 w-11/12 max-w-3xl">
+  <div class="mx-auto mt-20 w-full max-w-3xl sm:w-11/12">
     <h1 class="text-center font-display text-3xl drop-shadow-[0_1rem_2rem_rgba(255,255,255,0.2)]">
       Contact Me
     </h1>
@@ -31,7 +35,13 @@ const sendMessage = async () => {
         <h2 class="text-center font-display text-xl">
           Send A Message
         </h2>
-        <NForm ref="formRef" :model="formValue" class="mt-4" label-placement="left" label-width="120">
+        <NForm
+          ref="formRef"
+          :model="formValue"
+          class="mt-4"
+          :label-placement="smallBreakpoint ? 'top' : 'left'"
+          label-width="120"
+        >
           <NFormItem label="Email" path="email" :required="true" label-style="font-size: 1.25rem;">
             <NInput v-model:value="formValue.email" placeholder="your@email.com" />
           </NFormItem>

@@ -22,7 +22,9 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@huntersofbook/naive-ui-nuxt',
     '@nuxt/image-edge',
-    '@sidebase/nuxt-auth'
+    '@sidebase/nuxt-auth',
+    '@vueuse/nuxt',
+    'nuxt-icon'
   ],
   typescript: {
     shim: false

@@ -33,7 +33,7 @@ useServerSeoMeta({
 })
 </script>
 <template>
-  <div v-if="blogDataNulled?.markdown" class="mx-auto mt-20 w-11/12 max-w-3xl">
+  <div v-if="blogDataNulled?.markdown" class="mx-auto mt-20 w-full max-w-3xl sm:w-11/12">
     <RainbowBox>
       <RichText :block="blogDataNulled?.markdown" />
     </RainbowBox>

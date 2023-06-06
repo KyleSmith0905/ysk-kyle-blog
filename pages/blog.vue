@@ -16,7 +16,7 @@ const blogListDataNulled = computed(() => {
     </h1>
     <div class="mt-6 flex flex-col gap-6">
       <RainbowBox v-for="blog of blogListDataNulled" :key="blog.slug" :to="`/${blog.slug}`" :hover="true">
-        <div class="flex gap-3">
+        <div class="flex flex-col gap-3 sm:flex-row">
           <div class="grow">
             <h2 class="line-clamp-2 font-display text-xl">
               {{ blog.title }}
@@ -25,7 +25,7 @@ const blogListDataNulled = computed(() => {
               {{ blog.summary }}
             </p>
           </div>
-          <div class="relative h-32 w-36 shrink-0">
+          <div class="relative h-44 w-full shrink-0 sm:h-32 sm:w-36">
             <img :src="blog.thumbnailUrl" alt="" class="absolute inset-0 h-full w-full rounded-md object-cover opacity-50 blur-3xl" aria-hidden="true">
             <img :src="blog.thumbnailUrl" :alt="blog.thumbnailAlt" class="absolute inset-0 h-full w-full rounded-md object-cover">
           </div>
