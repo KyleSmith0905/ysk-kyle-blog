@@ -22,7 +22,7 @@ const themeOverrides: GlobalThemeOverrides = {
         <div class="absolute -z-10 h-24 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
         <div class="mx-auto flex h-full w-11/12 max-w-4xl items-center justify-between">
           <NuxtLink to="/" class="flex items-center gap-2">
-            <SiteLogo class="h-8 w-8" />
+            <SiteLogo class="!h-8 !w-8" />
             <h1 class="text-2xl">
               YSK Kyle Blog
             </h1>
