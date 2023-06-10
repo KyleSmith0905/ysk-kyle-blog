@@ -1,10 +1,6 @@
 Hey GitHub users!\
 I don't know how to best introduce my blog, so I have pasted the blog article that introduces my blog.
 
-```
-Greetings everyone, to my blog! I often wish I had a platform that I could talk about anything whenever I can. For example, I couldn't find any blogs that were *too good* that I could refer to when setting up an S3 storage bucket.
-```
-
 # The Start of YSK Kyle Blog 👋
 Welcome everyone, to my blogging platform! I often wish I had a platform that I could monologue about anything.
 
