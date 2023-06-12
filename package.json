@@ -59,6 +59,7 @@
     "@vercel/analytics": "^1.0.1",
     "@vicons/ionicons5": "^0.12.0",
     "markdown-it": "^13.0.1",
+    "markdown-it-named-code-blocks": "^0.1.0",
     "nodemailer": "^6.9.3",
     "nuxt-icon": "^0.4.1",
     "sharp": "^0.32.1",

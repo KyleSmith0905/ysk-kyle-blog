@@ -1,5 +1,7 @@
 import markdownIt from 'markdown-it'
 import Token from 'markdown-it/lib/token'
+// @ts-expect-error this module does not come with types, but don't worry.
+import namedCodeBlocks from 'markdown-it-named-code-blocks'
 
 export default defineNuxtPlugin(() => {
   const md = markdownIt({
@@ -19,6 +21,8 @@ export default defineNuxtPlugin(() => {
       })
     })
   })
+
+  md.use(namedCodeBlocks)
 
   return {
     provide: {

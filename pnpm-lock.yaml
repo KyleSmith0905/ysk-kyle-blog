@@ -29,6 +29,7 @@ specifiers:
   h3: ^1.6.6
   jsdom: ^22.1.0
   markdown-it: ^13.0.1
+  markdown-it-named-code-blocks: ^0.1.0
   naive-ui: ^2.34.4
   next-auth: ^4.22.1
   nodemailer: ^6.9.3
@@ -57,6 +58,7 @@ dependencies:
   '@vercel/analytics': 1.0.1
   '@vicons/ionicons5': 0.12.0
   markdown-it: 13.0.1
+  markdown-it-named-code-blocks: 0.1.0
   nodemailer: 6.9.3
   nuxt-icon: 0.4.1
   sharp: 0.32.1
@@ -1862,11 +1864,11 @@ packages:
       - supports-color
     dev: false
 
-  /@nuxt/kit-edge/3.5.4-28100197.199595f3:
-    resolution: {integrity: sha512-0rXiSsmKp7UqNU97Z7yhIb+/AZqivYfV/kYLghD9FeJod5seag75bE0cZKYRYhiJ97WBZp3SnGZDUFG5eUtrww==}
+  /@nuxt/kit-edge/3.6.0-28108658.05a8c2d9:
+    resolution: {integrity: sha512-VKb25qnnZy1+xZsprcfD4zfKiwLWGzJ7Halju6dkYhQC2/pW3aNEMCpC59c83QdAizzE5Hazdh+/kXA29k5DXw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge/3.5.4-28100197.199595f3
+      '@nuxt/schema': /@nuxt/schema-edge/3.6.0-28108658.05a8c2d9
       c12: 1.4.1
       consola: 3.1.0
       defu: 6.1.2
@@ -1881,7 +1883,7 @@ packages:
       scule: 1.0.0
       semver: 7.5.1
       unctx: 2.3.1
-      unimport: 3.0.7
+      unimport: 3.0.8
       untyped: 1.3.2
     transitivePeerDependencies:
       - rollup
@@ -1928,8 +1930,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge/3.5.4-28100197.199595f3:
-    resolution: {integrity: sha512-fgFgsJzAVC3JS43cDAYulXWjWTP/x7qRf9PdMg4QWUY3SY2Pgq2q+fofLqDRsf2c+DnKS5fkUj2ZrA/kk2BaBw==}
+  /@nuxt/schema-edge/3.6.0-28108658.05a8c2d9:
+    resolution: {integrity: sha512-AqH1DRjd4CRENwQYmE539MlFkYtS3mE6vRp5/EJpr0/nE6ppnGUQYeFJLolSHCzeeAFOjuW9tM39aKsCaOpoyA==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -1939,7 +1941,7 @@ packages:
       postcss-import-resolver: 2.0.0
       std-env: 3.3.3
       ufo: 1.1.2
-      unimport: 3.0.7
+      unimport: 3.0.8
       untyped: 1.3.2
     transitivePeerDependencies:
       - rollup
@@ -5554,7 +5556,6 @@ packages:
   /he/1.2.0:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==}
     hasBin: true
-    dev: true
 
   /highlight.js/11.8.0:
     resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==}
@@ -6486,6 +6487,12 @@ packages:
       semver: 6.3.0
     dev: true
 
+  /markdown-it-named-code-blocks/0.1.0:
+    resolution: {integrity: sha512-n4ylExmRpMODQtkBeLWVUA5hR5ClfS7IRwbwZsWKUED0TwSFRL1cr6Y4SeokPVuR6WJFQgPFOGq9eYpwkP8c2w==}
+    dependencies:
+      node-html-parser: 1.4.9
+    dev: false
+
   /markdown-it/13.0.1:
     resolution: {integrity: sha512-lTlxriVoy2criHP0JKRhO2VDG9c2ypWCsT237eDiLqi09rmbKoUetyGHq2uOIRoRS//kfoJckS0eUzzkDR+k2Q==}
     hasBin: true
@@ -6910,6 +6917,12 @@ packages:
     hasBin: true
     dev: true
 
+  /node-html-parser/1.4.9:
+    resolution: {integrity: sha512-UVcirFD1Bn0O+TSmloHeHqZZCxHjvtIeGdVdGMhyZ8/PWlEiZaZ5iJzR189yKZr8p0FXN58BUeC7RHRkf/KYGw==}
+    dependencies:
+      he: 1.2.0
+    dev: false
+
   /node-releases/2.0.12:
     resolution: {integrity: sha512-QzsYKWhXTWx8h1kIvqfnC++o0pEmpRQA/aenALsL2F4pqNVr7YzcdMlDij5WBnwftRbJCNJL/O7zdKaxKPHqgQ==}
 
@@ -7012,7 +7025,7 @@ packages:
       vue-svg-loader:
         optional: true
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge/3.5.4-28100197.199595f3
+      '@nuxt/kit': /@nuxt/kit-edge/3.6.0-28108658.05a8c2d9
       '@vue/compiler-sfc': 3.3.4
       svgo: 3.0.2
     transitivePeerDependencies:
@@ -9207,6 +9220,24 @@ packages:
     resolution: {integrity: sha512-2dVQUxJEGcrSZ0U4qtwJVODrlfyGcwmIOoHVqbAFFUx7kPoEN5JWr1cZFhLwoAwTmZOvqAm3YIkzv1engIQocg==}
     dependencies:
       '@rollup/pluginutils': 5.0.2_rollup@3.23.1
+      escape-string-regexp: 5.0.0
+      fast-glob: 3.2.12
+      local-pkg: 0.4.3
+      magic-string: 0.30.0
+      mlly: 1.3.0
+      pathe: 1.1.1
+      pkg-types: 1.0.3
+      scule: 1.0.0
+      strip-literal: 1.0.1
+      unplugin: 1.3.1
+    transitivePeerDependencies:
+      - rollup
+    dev: true
+
+  /unimport/3.0.8:
+    resolution: {integrity: sha512-AOt6xj3QMwqcTZRPB+NhFkyVEjCKnpTVoPm5x6424zz2NYYtCfym2bpJofzPHIJKPNIh5ko2/t2q46ZIMgdmbw==}
+    dependencies:
+      '@rollup/pluginutils': 5.0.2
       escape-string-regexp: 5.0.0
       fast-glob: 3.2.12
       local-pkg: 0.4.3
