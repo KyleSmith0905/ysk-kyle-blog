@@ -5,8 +5,6 @@ const props = defineProps<{
   hover?: boolean,
 }>()
 
-const backgroundImage = ref(`conic-gradient(from ${Math.random()}turn, ${rainbowWheel})`)
-
 const polymorphicTag = computed(() => {
   if (props.to) {
     return 'router-link'
@@ -17,6 +15,8 @@ const polymorphicTag = computed(() => {
   }
 })
 
+// Modifies the background behind box components to glow with random rainbow colors every time
+const backgroundImage = ref(`conic-gradient(from ${Math.random()}turn, ${rainbowWheel})`)
 onBeforeUpdate(() => {
   backgroundImage.value = `conic-gradient(from ${Math.random()}turn, ${rainbowWheel})`
 })
