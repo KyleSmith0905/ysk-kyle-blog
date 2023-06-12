@@ -27,6 +27,7 @@ specifiers:
   eslint: ^8.42.0
   eslint-plugin-tailwindcss: ^3.12.1
   h3: ^1.6.6
+  highlight.js: ^11.8.0
   jsdom: ^22.1.0
   markdown-it: ^13.0.1
   markdown-it-named-code-blocks: ^0.1.0
@@ -57,6 +58,7 @@ dependencies:
   '@sidebase/core': 0.1.4
   '@vercel/analytics': 1.0.1
   '@vicons/ionicons5': 0.12.0
+  highlight.js: 11.8.0
   markdown-it: 13.0.1
   markdown-it-named-code-blocks: 0.1.0
   nodemailer: 6.9.3
@@ -5560,7 +5562,6 @@ packages:
   /highlight.js/11.8.0:
     resolution: {integrity: sha512-MedQhoqVdr0U6SSnWPzfiadUcDHfN/Wzq25AkXiQv9oiOO/sG0S7XkvpFIqWBl9Yq1UYyYOOVORs5UW2XlPyzg==}
     engines: {node: '>=12.0.0'}
-    dev: true
 
   /hookable/5.5.3:
     resolution: {integrity: sha512-Yc+BQe8SvoXH1643Qez1zqLRmbA5rCL+sSmk6TVos0LWVfNIB7PGncdlId77WzLGSIB5KaWgTaNTs2lNVEI6VQ==}

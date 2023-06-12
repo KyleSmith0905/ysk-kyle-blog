@@ -1,0 +1,14 @@
+.named-fence-block {
+  position: relative;
+  padding-top: 2em;
+}
+
+.named-fence-filename {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  padding: 0px 4px;
+  font-weight: bold;
+  color: #fbfbfb;
+  background: #111111;
+}

@@ -7,22 +7,22 @@ export default defineEventHandler(async (event) => {
   if (!isUserAdmin(session?.user.email)) {
     throw createError({
       statusCode: 400,
-      statusMessage: 'User is not authorized to upload blog'
+      statusMessage: 'User is not authorized to update blog'
     })
   }
 
   const prisma = getPrisma()
   const body = await readBody(event)
+  const blogSlug = getQuery(event).slug
+  if (!blogSlug || typeof blogSlug !== 'string') {
+    return { exists: false }
+  }
 
-  const response = await prisma.blog.create({
-    data: {
-      slug: body.slug,
-      title: body.title,
-      summary: body.summary,
-      markdown: body.markdown,
-      thumbnailUrl: body.thumbnailUrl,
-      thumbnailAlt: body.thumbnailAlt
-    }
+  const response = await prisma.blog.update({
+    where: {
+      slug: blogSlug
+    },
+    data: body
   })
 
   if (!response) {

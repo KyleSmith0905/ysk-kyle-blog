@@ -4,7 +4,7 @@ type selectQueries = 'markdown' | 'summary' | 'title' | 'slug' | 'thumbnailUrl' 
 
 export default defineEventHandler(async (event) => {
   const prisma = getPrisma()
-  
+
   // Retrieve fields from query and validates them
   const blogSlug = getQuery(event).slug
   const selectedNames = getQuery(event).select
