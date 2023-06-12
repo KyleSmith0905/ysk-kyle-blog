@@ -4,12 +4,15 @@ type selectQueries = 'markdown' | 'summary' | 'title' | 'slug' | 'thumbnailUrl' 
 
 export default defineEventHandler(async (event) => {
   const prisma = getPrisma()
+  
+  // Retrieve fields from query and validates them
   const blogSlug = getQuery(event).slug
   const selectedNames = getQuery(event).select
   if (!blogSlug || typeof blogSlug !== 'string') {
     return { exists: false }
   }
 
+  // Selects which fields to fetch from the database
   const selectedProjection: Partial<Record<selectQueries, boolean>> = {}
   if (selectedNames && Array.isArray(selectedNames)) {
     selectedNames.forEach((name) => {
