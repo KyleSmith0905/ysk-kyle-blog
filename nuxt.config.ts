@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     emailServerPassword: process.env.EMAIL_SERVER_PASSWORD,
     emailFrom: process.env.EMAIL_FROM
   },
+
   modules: [
     '@nuxtjs/tailwindcss',
     'nuxt-svgo',
@@ -26,14 +27,18 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     'nuxt-icon'
   ],
+
   typescript: {
     shim: false
   },
+
   extends: ['@sidebase/core'],
+
   css: [
     '@/assets/css/override.css',
     '@/assets/css/markdown.css'
   ],
+
   routeRules: {
     // Does not change
     '/': { prerender: true },
@@ -45,6 +50,7 @@ export default defineNuxtConfig({
     // Admin side could all be client-rendered
     '/admin/**': { ssr: false }
   },
+
   app: {
     head: {
       title: 'YSK Kyle Blog - The Blog For Kyle Smith',
@@ -81,5 +87,9 @@ export default defineNuxtConfig({
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400;1,700&display=swap', onload: 'this.onload=null;this.rel="stylesheet"' }
       ]
     }
+  },
+
+  devtools: {
+    enabled: true
   }
 })
