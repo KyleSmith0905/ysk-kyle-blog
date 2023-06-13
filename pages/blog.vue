@@ -8,6 +8,19 @@ const blogListDataNulled = computed(() => {
     return null
   }
 })
+
+useServerSeoMeta({
+  title: 'Software Development Blogs Written By Kyle Smith',
+  ogTitle: 'Software Development Blogs Written By Kyle Smith',
+  twitterTitle: 'Software Development Blogs Written By Kyle Smith',
+  description: 'A collection of amazingly written blogs to help all ranges of software developer. See the most recent blogs pop into view live.',
+  ogDescription: 'A collection of amazingly written blogs to help all ranges of software developer. See the most recent blogs pop into view live.',
+  twitterDescription: 'A collection of amazingly written blogs to help all ranges of software developer. See the most recent blogs pop into view live.'
+})
+
+useSeoMeta({
+  title: 'Software Development Blogs Written By Kyle Smith'
+})
 </script>
 <template>
   <div class="mx-auto mt-20 w-11/12 max-w-3xl">
