@@ -56,7 +56,6 @@
     "@nuxt/image-edge": "1.0.0-28099902.2b6ed1c",
     "@prisma/client": "^4.15.0",
     "@sidebase/core": "^0.1.4",
-    "@vercel/analytics": "^1.0.1",
     "@vicons/ionicons5": "^0.12.0",
     "highlight.js": "^11.8.0",
     "markdown-it": "^13.0.1",
