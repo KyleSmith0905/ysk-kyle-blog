@@ -35,6 +35,17 @@ export default defineNuxtConfig({
     '@/assets/css/override.css',
     '@/assets/css/markdown.css'
   ],
+  routeRules: {
+    // Does not change
+    '/': { prerender: true },
+    // Blog pages should be update when they are changed
+    '/blog/*': { isr: 3600 },
+    '/blog': { isr: 900 },
+    // Client render contact us page to soft prevent bad email scrappers
+    '/contact': { ssr: false },
+    // Admin side could all be client-rendered
+    '/admin/**': { ssr: false }
+  },
   app: {
     head: {
       title: 'YSK Kyle Blog - The Blog For Kyle Smith',
