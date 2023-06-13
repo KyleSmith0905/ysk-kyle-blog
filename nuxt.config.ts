@@ -30,7 +30,6 @@ export default defineNuxtConfig({
     shim: false
   },
   extends: ['@sidebase/core'],
-  plugins: [{ src: '~/plugins/vercel.ts', mode: 'client' }],
   css: [
     '@/assets/css/override.css',
     '@/assets/css/markdown.css'
