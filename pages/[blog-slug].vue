@@ -1,11 +1,12 @@
 <script setup lang="ts">
 const route = useRoute()
 
-const { data: blogData } = useFetch('/api/blog', {
+const { data: blogData } = await useFetch('/api/blog', {
   method: 'GET',
   query: { slug: route.params.blogslug }
 })
 
+// Declare null if blog is missing
 const blogDataNulled = computed(() => {
   if (blogData.value && 'title' in blogData.value) {
     return blogData.value
@@ -28,8 +29,10 @@ useServerSeoMeta({
   ogImageHeight: 288,
   ogImageWidth: 384,
   ogType: 'article'
-}, {
-  mode: 'all'
+})
+
+useSeoMeta({
+  title: blogDataNulled.value?.title
 })
 </script>
 <template>
