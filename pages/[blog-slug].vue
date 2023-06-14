@@ -34,6 +34,10 @@ useServerSeoMeta({
 useSeoMeta({
   title: blogDataNulled.value?.title
 })
+
+definePageMeta({
+  middleware: 'blog'
+})
 </script>
 <template>
   <div v-if="blogDataNulled?.markdown" class="mx-auto mt-20 w-full max-w-3xl sm:w-11/12">
