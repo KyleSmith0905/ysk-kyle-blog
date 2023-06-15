@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import colors from 'tailwindcss/colors'
 import { darkTheme, GlobalThemeOverrides } from 'naive-ui'
+import { breakpointsTailwind } from '@vueuse/core'
 import SiteLogo from '~/assets/icons/logo.svg'
 
 const drawerActive = ref(false)
@@ -23,6 +24,9 @@ const menuToggle = () => {
 }
 
 const { width } = useWindowSize()
+
+const breakpoints = useBreakpoints(breakpointsTailwind)
+const smallBreakpoint = breakpoints.smaller('sm')
 </script>
 <template>
   <NConfigProvider :theme="darkTheme" :theme-overrides="themeOverrides" class="flex min-h-full flex-col">
@@ -32,19 +36,39 @@ const { width } = useWindowSize()
           <NDrawer v-model:show="drawerActive" :width="width">
             <NDrawerContent title="Navigation" class="backdrop-blur-md" :closable="true">
               <div class="flex flex-col gap-1">
-                <NButton :text-color="colors.white" :tag="definedNuxtLink" to="/" class="justify-start">
+                <NButton
+                  :text-color="colors.white"
+                  :tag="definedNuxtLink"
+                  to="/"
+                  class="justify-start"
+                  @click="drawerActive = false"
+                >
                   <span>Home</span>
                 </NButton>
-                <NButton :text-color="colors.white" :tag="definedNuxtLink" to="/blog" class="justify-start">
+                <NButton
+                  :text-color="colors.white"
+                  :tag="definedNuxtLink"
+                  to="/blog"
+                  class="justify-start"
+                  @click="drawerActive = false"
+                >
                   <span>Blog</span>
                 </NButton>
-                <NButton :text-color="colors.white" :tag="definedNuxtLink" to="/contact" class="justify-start">
+                <NButton
+                  :text-color="colors.white"
+                  :tag="definedNuxtLink"
+                  to="/contact"
+                  class="justify-start"
+                  @click="drawerActive = false"
+                >
                   <span>contact Me</span>
                 </NButton>
               </div>
             </NDrawerContent>
           </NDrawer>
-          <header class="fixed z-10 h-12 w-full font-display">
+          <header
+            class="z-10 h-12 w-full font-display"
+          >
             <div class="absolute -z-10 h-20 w-full bg-gradient-to-b from-black via-black to-transparent" />
             <div class="absolute -z-10 h-24 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
             <div class="mx-auto flex h-full w-11/12 max-w-4xl items-center justify-between">
@@ -54,7 +78,7 @@ const { width } = useWindowSize()
                   YSK Kyle Blog
                 </h1>
               </NuxtLink>
-              <NButtonGroup class="hidden sm:block">
+              <NButtonGroup v-if="!smallBreakpoint">
                 <NButton :text-color="colors.white" :secondary="true" :tag="definedNuxtLink" to="/">
                   <span>Home</span>
                 </NButton>
@@ -65,7 +89,7 @@ const { width } = useWindowSize()
                   <span>contact Me</span>
                 </NButton>
               </NButtonGroup>
-              <div class="flex sm:hidden">
+              <div v-else>
                 <NButton title="Navigational Sidebar" :secondary="true" @click="menuToggle()">
                   <Icon name="solar:hamburger-menu-broken" size="32" />
                 </NButton>
