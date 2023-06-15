@@ -66,7 +66,7 @@ const { width } = useWindowSize()
                 </NButton>
               </NButtonGroup>
               <div class="flex sm:hidden">
-                <NButton :secondary="true" @click="menuToggle()">
+                <NButton title="Navigational Sidebar" :secondary="true" @click="menuToggle()">
                   <Icon name="solar:hamburger-menu-broken" size="32" />
                 </NButton>
               </div>
