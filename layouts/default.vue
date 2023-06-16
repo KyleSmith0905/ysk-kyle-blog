@@ -67,7 +67,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
             </NDrawerContent>
           </NDrawer>
           <header
-            class="z-10 h-12 w-full font-display"
+            class="relative z-10 h-12 w-full font-display"
           >
             <div class="absolute -z-10 h-20 w-full bg-gradient-to-b from-black via-black to-transparent" />
             <div class="absolute -z-10 h-24 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
