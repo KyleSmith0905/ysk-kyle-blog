@@ -1,11 +1,10 @@
 import GithubProvider from 'next-auth/providers/github'
-import { PrismaClient } from '@prisma/client'
 import { Session } from 'next-auth'
 import { AdapterUser } from 'next-auth/adapters'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { NuxtAuthHandler } from '#auth'
 
-const prisma = new PrismaClient()
+const prisma = getPrisma()
 
 export default NuxtAuthHandler({
   secret: useRuntimeConfig().authSecret,

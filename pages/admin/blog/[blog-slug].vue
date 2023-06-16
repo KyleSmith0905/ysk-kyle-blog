@@ -92,7 +92,11 @@ const formValue = ref({
                 Upload Thumbnail
               </NButton>
             </NUpload>
+            <NInput v-model:value="formValue.thumbnailUrl" placeholder="Colorful well organized CSS code in browser inspect elements" />
           </NFormItem>
+          <NButton :round="true" class="!mb-4 !w-full" @click="updateBlogField('thumbnailUrl')">
+            Edit
+          </NButton>
           <NFormItem label="Thumbnail Alt" path="thumbnailAlt" :required="true" label-style="font-size: 1.25rem;">
             <NInput v-model:value="formValue.thumbnailAlt" placeholder="Colorful well organized CSS code in browser inspect elements" />
           </NFormItem>

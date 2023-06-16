@@ -41,15 +41,15 @@ const sendMessage = async () => {
       title: formValue.value.title,
       summary: formValue.value.summary,
       markdown: formValue.value.markdown,
-      thumbnailUrl: formValue.value.thumbnailUrl,
+      thumbnailUrl: 'https://pub-0ec37b26b8774822908b3349fcb3cf85.r2.dev/thumbnail/the-start-of-ysk-kyle-blog.webp',
       thumbnailAlt: formValue.value.thumbnailAlt
     }
   })
   if (!blog) {
-    return
+    // return
   }
 
-  uploadRef.value?.submit()
+  // uploadRef.value?.submit()
 }
 
 definePageMeta({ middleware: 'auth' })
