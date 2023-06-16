@@ -6,12 +6,18 @@ import { breakpointsTailwind } from '@vueuse/core'
 const message = useMessage()
 
 const formRef = ref<FormInst | null>(null)
+const spinContainerRef = ref<HTMLDivElement | null>(null)
 const formValue = ref({
   email: '',
   message: ''
 })
+const formSending = ref<boolean>(false)
 
 const sendMessage = async () => {
+  formSending.value = true
+
+  spinContainerRef.value?.style.setProperty('height', '3rem')
+
   await $fetch('/api/mail', {
     method: 'POST',
     body: {
@@ -19,6 +25,10 @@ const sendMessage = async () => {
       email: formValue.value.email
     }
   })
+
+  formSending.value = false
+
+  spinContainerRef.value?.style.setProperty('height', '0rem')
   message.success('Successfully sent message to YSK Kyle.')
 }
 
@@ -38,18 +48,21 @@ const smallBreakpoint = breakpoints.smaller('sm')
         <NForm
           ref="formRef"
           :model="formValue"
-          class="mt-4"
           :label-placement="smallBreakpoint ? 'top' : 'left'"
+          class="mt-4"
           label-width="120"
         >
           <NFormItem label="Email" path="email" :required="true" label-style="font-size: 1.25rem;">
-            <NInput v-model:value="formValue.email" placeholder="your@email.com" />
+            <NInput v-model:value="formValue.email" :disabled="formSending" placeholder="your@email.com" />
           </NFormItem>
           <NFormItem label="Message" path="message" :required="true" label-style="font-size: 1.25rem;">
-            <NInput v-model:value="formValue.message" type="textarea" placeholder="Hey, I found you on yskkyle.com! I would like to inquire about your web and mobile development experience." />
+            <NInput v-model:value="formValue.message" :disabled="formSending" type="textarea" placeholder="Hey, I found you on yskkyle.com! I would like to inquire about your web and mobile development experience." />
           </NFormItem>
+          <div ref="spinContainerRef" class="relative flex h-0 w-full justify-center overflow-hidden transition-all">
+            <NSpin class="absolute mx-auto h-8 w-8 overflow-hidden" />
+          </div>
           <div class="flex justify-center font-display">
-            <NButton :round="true" :secondary="true" class="!px-16" @click="sendMessage">
+            <NButton :round="true" :secondary="true" class="!px-16" :disabled="formSending" @click="sendMessage">
               Submit
             </NButton>
           </div>
@@ -62,7 +75,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
       </h2>
       <div class="mt-4 flex justify-center">
         <NButtonGroup :vertical="true" class="w-1/3 min-w-fit">
-          <NButton :secondary="true">
+          <NButton tag="a" :secondary="true" target="_blank" href="https://www.linkedin.com/in/kylesmith0905/">
             <template #icon>
               <NIcon>
                 <LogoLinkedin />
@@ -70,7 +83,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
             </template>
             LinkedIn
           </NButton>
-          <NButton :secondary="true">
+          <NButton tag="a" :secondary="true" target="_blank" href="https://www.youtube.com/channel/UC05aorP0c1mGhZldI5JimIA">
             <template #icon>
               <NIcon>
                 <LogoYoutube />
@@ -78,7 +91,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
             </template>
             Youtube
           </NButton>
-          <NButton :secondary="true">
+          <NButton tag="a" :secondary="true" target="_blank" href="https://twitter.com/KyleSmith0905">
             <template #icon>
               <NIcon>
                 <LogoTwitter />
