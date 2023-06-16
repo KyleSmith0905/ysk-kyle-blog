@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import colors from 'tailwindcss/colors'
 import { darkTheme, GlobalThemeOverrides } from 'naive-ui'
-import { breakpointsTailwind } from '@vueuse/core'
 import SiteLogo from '~/assets/icons/logo.svg'
 
 const drawerActive = ref(false)
@@ -24,9 +23,6 @@ const menuToggle = () => {
 }
 
 const { width } = useWindowSize()
-
-const breakpoints = useBreakpoints(breakpointsTailwind)
-const smallBreakpoint = breakpoints.smaller('sm')
 </script>
 <template>
   <NConfigProvider :theme="darkTheme" :theme-overrides="themeOverrides" class="flex min-h-full flex-col">
@@ -78,7 +74,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
                   YSK Kyle Blog
                 </h1>
               </NuxtLink>
-              <NButtonGroup v-if="!smallBreakpoint">
+              <NButtonGroup class="max-sm:hidden">
                 <NButton :text-color="colors.white" :secondary="true" :tag="definedNuxtLink" to="/">
                   <span>Home</span>
                 </NButton>
@@ -89,7 +85,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
                   <span>contact Me</span>
                 </NButton>
               </NButtonGroup>
-              <div v-else>
+              <div class="sm:hidden">
                 <NButton title="Navigational Sidebar" :secondary="true" @click="menuToggle()">
                   <Icon name="solar:hamburger-menu-broken" size="32" />
                 </NButton>
