@@ -31,7 +31,7 @@ const smallBreakpoint = breakpoints.smaller('sm')
 <template>
   <NConfigProvider :theme="darkTheme" :theme-overrides="themeOverrides" class="flex min-h-full flex-col">
     <NMessageProvider>
-      <NScrollbar class="h-screen" trigger="none">
+      <NScrollbar class="!h-screen" trigger="none">
         <div class="flex min-h-screen flex-col">
           <NDrawer v-model:show="drawerActive" :width="width">
             <NDrawerContent title="Navigation" class="backdrop-blur-md" :closable="true">

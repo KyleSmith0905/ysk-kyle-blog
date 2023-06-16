@@ -74,7 +74,7 @@ const formValue = ref({
           <div v-if="formValue.markdown" class="mx-auto mb-4 w-11/12 rounded-lg bg-black px-4 py-2 ring-1 ring-zinc-900">
             <RichText :block="formValue.markdown" />
           </div>
-          <NButton :round="true" class="mb-4 w-full" @click="updateBlogField('markdown')">
+          <NButton :round="true" class="!mb-4 !w-full" @click="updateBlogField('markdown')">
             Edit
           </NButton>
           <NFormItem label="Thumbnail" path="thumbnailUrl" :required="true" label-style="font-size: 1.25rem;">
