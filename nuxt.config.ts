@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     'nuxt-svgo',
     '@huntersofbook/naive-ui-nuxt',
     '@nuxt/image-edge',
-    '@sidebase/nuxt-auth',
     '@vueuse/nuxt',
     'nuxt-icon'
   ],
@@ -43,8 +42,8 @@ export default defineNuxtConfig({
     // Does not change
     '/': { prerender: true },
     // Blog pages should be update when they are changed
-    '/blog/*': { isr: 3600 },
-    '/blog': { isr: 900 },
+    '/blog/*': { isr: 86400 },
+    '/blog': { isr: 86400 },
     // Client render contact us page to soft prevent bad email scrappers
     '/contact': { ssr: false },
     // Admin side could all be client-rendered
