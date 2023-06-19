@@ -1,9 +1,9 @@
-import { getPrisma } from '~~/server/utils/prisma'
+import { PrismaClient } from '@prisma/client'
 
 type selectQueries = 'markdown' | 'summary' | 'title' | 'slug' | 'thumbnailUrl' | 'thumbnailAlt';
 
 export default defineEventHandler(async (event) => {
-  const prisma = getPrisma()
+  const prisma = new PrismaClient()
 
   // Retrieve fields from query and validates them
   const blogSlug = getQuery(event).slug

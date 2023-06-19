@@ -4,8 +4,6 @@ import { AdapterUser } from 'next-auth/adapters'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { NuxtAuthHandler } from '#auth'
 
-const prisma = getPrisma()
-
 export default NuxtAuthHandler({
   secret: useRuntimeConfig().authSecret,
   providers: [
@@ -30,5 +28,5 @@ export default NuxtAuthHandler({
     }
   },
   // @ts-expect-error We are certain this adapter is not undefined
-  adapter: PrismaAdapter(prisma)
+  adapter: PrismaAdapter(new PrismaClient())
 })

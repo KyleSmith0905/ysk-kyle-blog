@@ -1,5 +1,5 @@
+import { PrismaClient } from '@prisma/client'
 import { getServerSession } from '#auth'
-import { getPrisma } from '~~/server/utils/prisma'
 import { isUserAdmin } from '~~/utils/authentication'
 
 export default defineEventHandler(async (event) => {
@@ -11,7 +11,7 @@ export default defineEventHandler(async (event) => {
     })
   }
 
-  const prisma = getPrisma()
+  const prisma = new PrismaClient()
   const body = await readBody(event)
   const blogSlug = getQuery(event).slug
   if (!blogSlug || typeof blogSlug !== 'string') {

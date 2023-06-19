@@ -1,7 +1,7 @@
-import { getPrisma } from '~~/server/utils/prisma'
+import { PrismaClient } from '@prisma/client'
 
 export default defineEventHandler(async () => {
-  const prisma = getPrisma()
+  const prisma = new PrismaClient()
 
   const response = await prisma.blog.findMany({
     orderBy: {
