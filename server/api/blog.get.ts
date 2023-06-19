@@ -19,6 +19,8 @@ export default defineEventHandler(async (event) => {
       selectedProjection[name as selectQueries] = true
     })
   } else {
+    selectedProjection.thumbnailAlt = true
+    selectedProjection.thumbnailUrl = true
     selectedProjection.markdown = true
     selectedProjection.summary = true
     selectedProjection.title = true
