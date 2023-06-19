@@ -41,16 +41,28 @@ const sendMessage = async () => {
       title: formValue.value.title,
       summary: formValue.value.summary,
       markdown: formValue.value.markdown,
-      thumbnailUrl: 'https://pub-0ec37b26b8774822908b3349fcb3cf85.r2.dev/thumbnail/the-start-of-ysk-kyle-blog.webp',
+      thumbnailUrl: formValue.value.thumbnailUrl,
       thumbnailAlt: formValue.value.thumbnailAlt
     }
   })
   if (!blog) {
-    // return
+    return
   }
 
-  // uploadRef.value?.submit()
+  uploadRef.value?.submit()
 }
+
+onBeforeMount(() => {
+  const adminForm = localStorage.getItem('admin--form')
+  if (adminForm) {
+    formValue.value = JSON.parse(adminForm)
+  }
+
+  // Save admin form every 10 seconds (does not need to be optimized).
+  setInterval(() => {
+    localStorage.setItem('admin--form', JSON.stringify(formValue.value))
+  }, 10_000)
+})
 
 definePageMeta({ middleware: 'auth' })
 </script>
