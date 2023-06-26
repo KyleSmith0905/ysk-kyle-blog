@@ -65,8 +65,9 @@ const { width } = useWindowSize()
           <header
             class="relative z-10 h-12 w-full font-display"
           >
-            <div class="absolute -z-10 h-20 w-full bg-gradient-to-b from-black via-black to-transparent" />
-            <div class="absolute -z-10 h-24 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
+            <div class="absolute -z-10 h-20 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
+            <div class="absolute -z-10 h-full w-full bg-black" />
+            <div class="absolute -z-10 h-full w-full bg-rainbow-linear-gradient-r opacity-5" />
             <div class="mx-auto flex h-full w-11/12 max-w-4xl items-center justify-between">
               <NuxtLink to="/" class="flex items-center gap-2">
                 <SiteLogo class="!h-8 !w-8" />
@@ -75,13 +76,13 @@ const { width } = useWindowSize()
                 </h1>
               </NuxtLink>
               <NButtonGroup class="max-sm:hidden">
-                <NButton :text-color="colors.white" :secondary="true" :tag="definedNuxtLink" to="/">
+                <NButton :text-color="colors.white" :strong="true" :tertiary="true" :tag="definedNuxtLink" to="/">
                   <span>Home</span>
                 </NButton>
-                <NButton :text-color="colors.white" :secondary="true" :tag="definedNuxtLink" to="/blog">
+                <NButton :text-color="colors.white" :strong="true" :tertiary="true" :tag="definedNuxtLink" to="/blog">
                   <span>Blog</span>
                 </NButton>
-                <NButton :text-color="colors.white" :secondary="true" :tag="definedNuxtLink" to="/contact">
+                <NButton :text-color="colors.white" :strong="true" :tertiary="true" :tag="definedNuxtLink" to="/contact">
                   <span>contact Me</span>
                 </NButton>
               </NButtonGroup>
