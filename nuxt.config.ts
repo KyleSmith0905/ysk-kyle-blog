@@ -24,7 +24,8 @@ export default defineNuxtConfig({
     '@huntersofbook/naive-ui-nuxt',
     '@nuxt/image-edge',
     '@vueuse/nuxt',
-    'nuxt-icon'
+    'nuxt-icon',
+    '@sidebase/nuxt-auth'
   ],
 
   typescript: {
@@ -42,7 +43,7 @@ export default defineNuxtConfig({
     // Does not change
     '/': { prerender: true },
     // Blog pages should be update when they are changed
-    '/*': { headers: { 'cache-control': 'public, s-maxage=1209600, stale-while-revalidate=21600' } },
+    '/*': { isr: 604800 },
     '/blog': { isr: 604800 },
     // Client render contact us page to soft prevent bad email scrappers
     '/contact': { ssr: false },

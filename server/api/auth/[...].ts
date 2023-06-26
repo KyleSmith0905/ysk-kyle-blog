@@ -2,6 +2,7 @@ import GithubProvider from 'next-auth/providers/github'
 import { Session } from 'next-auth'
 import { AdapterUser } from 'next-auth/adapters'
 import { PrismaAdapter } from '@auth/prisma-adapter'
+import { PrismaClient } from '@prisma/client'
 import { NuxtAuthHandler } from '#auth'
 
 export default NuxtAuthHandler({

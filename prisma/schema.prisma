@@ -5,17 +5,18 @@ generator client {
 }
 
 datasource db {
-  provider  = "cockroachdb"
-  url       = env("DATABASE_URL")
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
 }
 
 model Blog {
   slug         String   @id
-  title        String
-  summary      String
-  markdown     String
+  title        String   @db.Text
+  summary      String   @db.Text
+  markdown     String   @db.Text
   thumbnailUrl String
-  thumbnailAlt String
+  thumbnailAlt String   @db.Text
   createdAt    DateTime @default(now())
 }
 
@@ -25,17 +26,18 @@ model Account {
   type               String
   provider           String
   providerAccountId  String
-  refresh_token      String?
-  access_token       String?
+  refresh_token      String?  @db.Text
+  access_token       String?  @db.Text
   expires_at         Int?
   token_type         String?
   scope              String?
-  id_token           String?
+  id_token           String?  @db.Text
   session_state      String?
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+  @@index([userId])
 }
 
 model Session {
@@ -44,6 +46,8 @@ model Session {
   userId       String
   expires      DateTime
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model User {
