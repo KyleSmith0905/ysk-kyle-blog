@@ -4,6 +4,8 @@ import { darkTheme, GlobalThemeOverrides } from 'naive-ui'
 import SiteLogo from '~/assets/icons/logo.svg'
 
 const drawerActive = ref(false)
+const currentRainbow = ref<HTMLDivElement>()
+const futureRainbow = ref<HTMLDivElement>()
 
 const definedNuxtLink = computed(() => {
   // @ts-expect-error We treat it as an HTML element tag by applying it to buttons
@@ -23,6 +25,30 @@ const menuToggle = () => {
 }
 
 const { width } = useWindowSize()
+const router = useRouter()
+
+router.beforeEach(() => {
+  currentRainbow.value?.animate(
+    [
+      { transform: 'translateX(0%)' },
+      { transform: 'translateX(100%)' }
+    ],
+    {
+      duration: 500,
+      easing: 'cubic-bezier(0,.85,1,.15)'
+    }
+  )
+  futureRainbow.value?.animate(
+    [
+      { transform: 'translateX(-100%)' },
+      { transform: 'translateX(0%)' }
+    ],
+    {
+      duration: 500,
+      easing: 'cubic-bezier(0,.85,1,.15)'
+    }
+  )
+})
 </script>
 <template>
   <NConfigProvider :theme="darkTheme" :theme-overrides="themeOverrides" class="flex min-h-full flex-col">
@@ -65,7 +91,8 @@ const { width } = useWindowSize()
           <header
             class="relative z-10 h-12 w-full font-display"
           >
-            <div class="absolute -z-10 h-20 w-full bg-rainbow-linear-gradient-r opacity-80 gradient-mask-b-0" />
+            <div ref="currentRainbow" class="absolute -z-10 h-32 w-full bg-rainbow-linear-gradient-r opacity-30 gradient-mask-b-0" />
+            <div ref="futureRainbow" class="absolute -z-10 h-32 w-full translate-x-full bg-rainbow-linear-gradient-r opacity-30 gradient-mask-b-0" />
             <div class="absolute -z-10 h-full w-full bg-black" />
             <div class="absolute -z-10 h-full w-full bg-rainbow-linear-gradient-r opacity-5" />
             <div class="mx-auto flex h-full w-11/12 max-w-4xl items-center justify-between">
