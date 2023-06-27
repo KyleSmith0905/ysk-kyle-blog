@@ -68,10 +68,10 @@ onMounted(() => {
   }
   animateFrame()
 
-  const mutationObserver = new MutationObserver(() => {
+  const resizeObserver = new ResizeObserver(() => {
     animation.resize()
   })
-  mutationObserver.observe(animationContainerElement)
+  resizeObserver.observe(animationContainerElement)
 })
 </script>
 <template>
@@ -126,7 +126,7 @@ onMounted(() => {
                   YSK Kyle Blog
                 </h1>
               </NuxtLink>
-              <NButtonGroup class="max-sm:hidden">
+              <NButtonGroup class="max-sm:!hidden">
                 <NButton :text-color="colors.white" :strong="true" :tertiary="true" :tag="definedNuxtLink" to="/">
                   <span>Home</span>
                 </NButton>
@@ -137,11 +137,11 @@ onMounted(() => {
                   <span>contact Me</span>
                 </NButton>
               </NButtonGroup>
-              <div class="sm:hidden">
+              <NButtonGroup class="sm:hidden">
                 <NButton title="Navigational Sidebar" :secondary="true" @click="menuToggle()">
                   <Icon name="solar:hamburger-menu-broken" size="32" />
                 </NButton>
-              </div>
+              </NButtonGroup>
             </div>
           </header>
           <main class="grow pt-6">
