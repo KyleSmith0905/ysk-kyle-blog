@@ -32,12 +32,7 @@ onBeforeUpdate(() => {
       'cursor-pointer': to || href,
     }"
   >
-    <div class="absolute inset-0 -z-10 overflow-hidden rounded-2xl bg-black">
-      <div
-        class="absolute inset-0 translate-y-8 opacity-5 blur-3xl"
-        :style="{backgroundImage: backgroundImage}"
-      />
-    </div>
+    <div class="absolute inset-0 -z-10 overflow-hidden rounded-2xl bg-black opacity-75" />
     <div class="absolute inset-0 -z-20 rounded-2xl">
       <div
         :class="{

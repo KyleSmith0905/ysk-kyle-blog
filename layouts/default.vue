@@ -2,6 +2,7 @@
 import colors from 'tailwindcss/colors'
 import { darkTheme, GlobalThemeOverrides } from 'naive-ui'
 import SiteLogo from '~/assets/icons/logo.svg'
+import { animationController } from '@/utils/background'
 
 const drawerActive = ref(false)
 const currentRainbow = ref<HTMLDivElement>()
@@ -49,52 +50,75 @@ router.beforeEach(() => {
     }
   )
 })
+
+const animationContainer = ref<HTMLDivElement>()
+
+onMounted(() => {
+  const animationContainerElement = animationContainer.value
+  if (!animationContainerElement) {
+    return
+  }
+
+  const animation = animationController({ container: animationContainerElement })
+
+  animation.animate()
+  const animateFrame = () => {
+    animation.animate()
+    requestAnimationFrame(() => animateFrame())
+  }
+  animateFrame()
+
+  const mutationObserver = new MutationObserver(() => {
+    animation.resize()
+  })
+  mutationObserver.observe(animationContainerElement)
+})
 </script>
 <template>
   <NConfigProvider :theme="darkTheme" :theme-overrides="themeOverrides" class="flex min-h-full flex-col">
     <NMessageProvider>
       <NScrollbar class="!h-screen" trigger="none">
-        <div class="flex min-h-screen flex-col">
-          <NDrawer v-model:show="drawerActive" :width="width">
-            <NDrawerContent title="Navigation" class="backdrop-blur-md" :closable="true">
-              <div class="flex flex-col gap-1">
-                <NButton
-                  :text-color="colors.white"
-                  :tag="definedNuxtLink"
-                  to="/"
-                  class="justify-start"
-                  @click="drawerActive = false"
-                >
-                  <span>Home</span>
-                </NButton>
-                <NButton
-                  :text-color="colors.white"
-                  :tag="definedNuxtLink"
-                  to="/blog"
-                  class="justify-start"
-                  @click="drawerActive = false"
-                >
-                  <span>Blog</span>
-                </NButton>
-                <NButton
-                  :text-color="colors.white"
-                  :tag="definedNuxtLink"
-                  to="/contact"
-                  class="justify-start"
-                  @click="drawerActive = false"
-                >
-                  <span>contact Me</span>
-                </NButton>
-              </div>
-            </NDrawerContent>
-          </NDrawer>
+        <NDrawer v-model:show="drawerActive" :width="width">
+          <NDrawerContent title="Navigation" class="backdrop-blur-md" :closable="true">
+            <div class="flex flex-col gap-1">
+              <NButton
+                :text-color="colors.white"
+                :tag="definedNuxtLink"
+                to="/"
+                class="justify-start"
+                @click="drawerActive = false"
+              >
+                <span>Home</span>
+              </NButton>
+              <NButton
+                :text-color="colors.white"
+                :tag="definedNuxtLink"
+                to="/blog"
+                class="justify-start"
+                @click="drawerActive = false"
+              >
+                <span>Blog</span>
+              </NButton>
+              <NButton
+                :text-color="colors.white"
+                :tag="definedNuxtLink"
+                to="/contact"
+                class="justify-start"
+                @click="drawerActive = false"
+              >
+                <span>contact Me</span>
+              </NButton>
+            </div>
+          </NDrawerContent>
+        </NDrawer>
+        <div class="relative flex min-h-screen flex-col">
+          <div ref="animationContainer" class="absolute inset-0 -z-20 h-full w-full" />
           <header
             class="relative z-10 h-12 w-full font-display"
           >
             <div ref="currentRainbow" class="absolute -z-10 h-32 w-full bg-rainbow-linear-gradient-r opacity-30 gradient-mask-b-0" />
             <div ref="futureRainbow" class="absolute -z-10 h-32 w-full translate-x-full bg-rainbow-linear-gradient-r opacity-30 gradient-mask-b-0" />
-            <div class="absolute -z-10 h-full w-full bg-black" />
-            <div class="absolute -z-10 h-full w-full bg-rainbow-linear-gradient-r opacity-5" />
+            <div class="absolute -z-10 h-full w-full bg-black opacity-75" />
             <div class="mx-auto flex h-full w-11/12 max-w-4xl items-center justify-between">
               <NuxtLink to="/" class="flex items-center gap-2">
                 <SiteLogo class="!h-8 !w-8" />

@@ -1,3 +1,4 @@
+import glsl from 'vite-plugin-glsl'
 import { setAbsoluteSqliteDatabaseUrlForPrisma } from './prisma/utils'
 
 setAbsoluteSqliteDatabaseUrlForPrisma()
@@ -95,5 +96,9 @@ export default defineNuxtConfig({
 
   devtools: {
     enabled: true
+  },
+
+  vite: {
+    plugins: [glsl()]
   }
 })
