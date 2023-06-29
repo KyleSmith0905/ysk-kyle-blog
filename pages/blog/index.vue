@@ -28,7 +28,7 @@ useSeoMeta({
       Recent Blogs
     </h1>
     <div class="mt-6 flex flex-col gap-6">
-      <RainbowBox v-for="blog of blogListDataNulled" :key="blog.slug" :to="`/${blog.slug}`" :hover="true">
+      <RainbowBox v-for="blog of blogListDataNulled" :key="blog.slug" :to="`/blog/${blog.slug}`" :hover="true">
         <div class="flex flex-col gap-3 sm:flex-row">
           <div class="grow">
             <h2 class="line-clamp-2 font-display text-xl">
